@@ -7,6 +7,9 @@ class Service(models.Model):
     name = models.CharField(max_length=50)
     full_price = models.PositiveIntegerField()
 
+    def __str__(self) -> str:
+        return f"Сервис: {self.name}"
+
 
 class Plan(models.Model):
     PLAN_TYPES = (
@@ -14,6 +17,9 @@ class Plan(models.Model):
         ('student', 'Student'),
         ('discount', 'Discount')
     )
+
+    def __str__(self) -> str:
+        return f"Тарифный план: {self.plan_type} скидка: {self.discount_percent}"
 
     plan_type = models.CharField(choices=PLAN_TYPES, max_length=10)
     discount_percent = models.PositiveIntegerField(default=0,
